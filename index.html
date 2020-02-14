@@ -101,33 +101,33 @@
 
             <h1> Paypal Smart Payments Button </h1>
 
-            <div id="paypal-button-container"></div>
-            <script src="https://www.paypal.com/sdk/js?client-id=AYKH723o3GnxunquJ-iXCfJ7WJz0GAoV7Rd3cSuwlVgg66WCustFdSM5UTXKxCgMcYHSyQOvAuiJc3I3&currency=USD" data-sdk-integration-source="button-factory"></script>
-            <script>
-                paypal.Buttons({
-                    style: {
-                        shape: 'pill',
-                        color: 'gold',
-                        layout: 'vertical',
-                        label: 'buynow',
-                        
-                    },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                amount: {
-                                    value: '1'
-                                }
-                            }]
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                        });
+           <div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AYBt7lmvXDSgjwR4GsXk0cfN1MAxt0-JO7upyuXx4f3yIJISygK9kWNvX_A75603a7gdmGnx5So-xk9w&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script>
+    paypal.Buttons({
+        style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'horizontal',
+            label: 'paypal',
+            
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '1'
                     }
-                }).render('#paypal-button-container');
-            </script>
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
 
             <hr/>
 
